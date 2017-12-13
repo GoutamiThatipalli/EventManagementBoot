@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.event.dto.CategoryDto;
 import com.event.dto.EventDto;
+import com.event.dto.UserDto;
 import com.event.service.EventService;
 
 @EnableAutoConfiguration
@@ -41,5 +42,11 @@ public class EventController {
 	@Transactional(readOnly = true)
 	public List<EventDto> Upcomming() {
 		return eventService.Upcomming();
+	}
+	@CrossOrigin
+	@RequestMapping(value = "getAllUsers")
+	@Transactional(readOnly = true)
+	public List<UserDto> getAllUsers() {
+		return eventService.getAllUsers();
 	}
 }

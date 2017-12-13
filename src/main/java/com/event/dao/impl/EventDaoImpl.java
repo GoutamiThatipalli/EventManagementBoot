@@ -12,8 +12,10 @@ import org.springframework.stereotype.Repository;
 import com.event.dao.EventDao;
 import com.event.dto.CategoryDto;
 import com.event.dto.EventDto;
+import com.event.dto.UserDto;
 import com.event.util.CategoryRowMapper;
 import com.event.util.EventRowMapper;
+import com.event.util.UsersRowMapper;
 @Repository("EventDao")
 public class EventDaoImpl implements EventDao{
 	@Autowired
@@ -45,5 +47,9 @@ public class EventDaoImpl implements EventDao{
 		String query= "select * from events where fromDate >= DATE(NOW())";
 		return jdbc.query(query, new EventRowMapper());
 	}
-	
+	public List<UserDto> getAllUsers(){
+		String query = "select * from users";
+		return jdbc.query(query, new UsersRowMapper());
+		
+	}
 }

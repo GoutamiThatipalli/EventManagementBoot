@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.event.dao.EventDao;
 import com.event.dto.CategoryDto;
 import com.event.dto.EventDto;
+import com.event.dto.UserDto;
 import com.event.service.EventService;
 @Component
 @Repository("EventService")
@@ -35,6 +36,11 @@ public class EventServiceImpl implements EventService {
 	public List<EventDto> Upcomming() {
 		// TODO Auto-generated method stub
 		return eventDao.Upcomming();
+	}
+	@Override
+	public List<UserDto> getAllUsers() {
+		// TODO Auto-generated method stub
+		return eventDao.getAllUsers();
 	}
 
 }
