@@ -23,7 +23,7 @@ public class EventDaoImpl implements EventDao{
 	@Autowired
 	NamedParameterJdbcTemplate jdbcTemplate;
 	public int addEvents(EventDto event){
-		String query = "insert into events values(:id,:name,:desc,:image,:fromdate,:todate,:userid,:catid)";
+		String query = "insert into events values(:id,:name,:desc,:image,:fromdate,:todate,:emailid,:catid)";
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", event.getEventId());
 		map.put("name", event.getEventName());
@@ -31,7 +31,7 @@ public class EventDaoImpl implements EventDao{
 		map.put("image", event.getEventImage());
 		map.put("fromdate", event.getFromDate());
 		map.put("todate", event.getToDate());
-		map.put("userid",event.getUserId());
+		map.put("emailid",event.getEmailId());
 		map.put("catid",event.getCategory_id());
 		return jdbcTemplate.update(query, map);
 	}

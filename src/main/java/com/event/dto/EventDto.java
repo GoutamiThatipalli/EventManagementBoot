@@ -8,7 +8,7 @@ public class EventDto {
 	String fromDate;
 	String toDate;
 	String category_id;
-	String userId;
+	String emailId;
 	public String getEventId() {
 		return eventId;
 	}
@@ -51,11 +51,11 @@ public class EventDto {
 	public void setCategory_id(String category_id) {
 		this.category_id = category_id;
 	}
-	public String getUserId() {
-		return userId;
+	public String getEmailId() {
+		return emailId;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
 
 }
