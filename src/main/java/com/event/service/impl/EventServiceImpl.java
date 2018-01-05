@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.event.dao.EventDao;
 import com.event.dto.CategoryDto;
 import com.event.dto.EventDto;
+import com.event.dto.Logininfo;
 import com.event.dto.UserDto;
 import com.event.service.EventService;
 @Component
@@ -42,5 +43,12 @@ public class EventServiceImpl implements EventService {
 		// TODO Auto-generated method stub
 		return eventDao.getAllUsers();
 	}
-
+	public CategoryDto getCategory(String id){
+		return eventDao.getCategory(id);
+	}
+	@Override
+	public Boolean login(Logininfo login) {
+		// TODO Auto-generated method stub
+		return eventDao.login(login.getUserName(), login.getPassword());
+	}
 }

@@ -15,10 +15,10 @@ public class UsersRowMapper implements RowMapper<UserDto> {
 		user.setFirstName(rs.getString("firstName"));
 		user.setMiddleName(rs.getString("middleName"));
 		user.setLastName(rs.getString("lastName"));
-		user.setEmail(rs.getString("email"));
+		user.setEmail(rs.getString("emailId"));
 		user.setMobile(rs.getString("mobile"));
 		user.setCreatedOn(rs.getString("createdOn"));
+		user.setPassword(rs.getString("password"));
 		return user;
 	}
-
 }

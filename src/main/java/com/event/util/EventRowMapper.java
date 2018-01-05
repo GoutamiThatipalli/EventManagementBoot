@@ -15,7 +15,7 @@ public class EventRowMapper implements RowMapper<EventDto> {
 		EventDto event =new EventDto();
 		event.setEventId(rs.getString("eventId"));
 		event.setEventName(rs.getString("eventName"));
-		event.setEventDesc(rs.getString("eventDesc"));
+		event.setEventDesc(rs.getString("eventDescription"));
 		event.setEventImage(rs.getString("eventImage"));
 		event.setFromDate(rs.getString("fromDate"));
 		event.setToDate(rs.getString("toDate"));

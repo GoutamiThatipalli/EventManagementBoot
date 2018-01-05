@@ -3,12 +3,14 @@ package com.event.dto;
 public class UserDto {
 	String userId;
 	String userName;
+	String password;
 	String firstName;
 	String middleName;
 	String lastName;
 	String mobile;
 	String createdOn;
 	String email;
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -20,6 +22,13 @@ public class UserDto {
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getFirstName() {
 		return firstName;
