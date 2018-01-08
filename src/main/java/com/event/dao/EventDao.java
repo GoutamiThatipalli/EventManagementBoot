@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.event.dto.CategoryDto;
 import com.event.dto.EventDto;
-import com.event.dto.Logininfo;
 import com.event.dto.UserDto;
 
 public interface EventDao {

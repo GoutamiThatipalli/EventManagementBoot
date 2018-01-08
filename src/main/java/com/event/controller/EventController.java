@@ -1,28 +1,22 @@
 package com.event.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.core.NewCookie;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -47,7 +41,7 @@ public class EventController {
 
 	@CrossOrigin
 	@RequestMapping(value = "addevents", method = RequestMethod.POST, consumes = "multipart/form-data")
-	public ResponseEntity<String> addEvents(@RequestPart("file") MultipartFile file, @RequestPart("event") EventDto event) {
+	public ResponseEntity<String> addEvents(@RequestPart("file") MultipartFile file, @RequestPart("data") EventDto event) {
 		String message = "";
 		try {
 			storageService.store(file);
@@ -70,7 +64,7 @@ public class EventController {
 
 	@CrossOrigin
 	@RequestMapping(value = "auth", method = RequestMethod.POST, consumes = { "application/json" })
-	public boolean login(@RequestBody Logininfo user,@CookieValue(value = "x-auth-token", defaultValue = "0") String cookievalue,HttpServletRequest request,HttpServletResponse response) {
+	public boolean login(@RequestBody Logininfo user,HttpServletRequest request,HttpServletResponse response) {
 	
 		String uuid = UUID.randomUUID().toString();
 		response.addCookie(new Cookie("x-auth-token", uuid));	
@@ -81,6 +75,7 @@ public class EventController {
 	@RequestMapping(value = "getAllCategories")
 	@Transactional(readOnly = true)
 	public List<CategoryDto> AllCategories() {
+		//System.out.println("cookie value is"+cookievalue);
 		return eventService.AllCategories();
 	}
 
