@@ -16,7 +16,7 @@ import com.event.service.StorageService;
 @Component
 @Repository("StorageService")
 public class StorageServiceImpl implements StorageService {
-	private final Path rootLocation = Paths.get("/home/goutamit/Pictures");
+	private final Path rootLocation = Paths.get("/home/goutamit/eventManagement/src/assets/img/fileupload");
 
 	@Override
 	public void store(MultipartFile file) {
@@ -36,7 +36,7 @@ public class StorageServiceImpl implements StorageService {
 				return resource;
 			} else {
 				throw new RuntimeException("FAIL!");
-			}
+			} 
 		} catch (MalformedURLException e) {
 			throw new RuntimeException("FAIL!");
 		}
