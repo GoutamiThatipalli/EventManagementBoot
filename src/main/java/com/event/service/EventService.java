@@ -17,4 +17,5 @@ public interface EventService {
 	public List<UserDto> getAllUsers();
 	public CategoryDto getCategory(String id);
 	public Boolean login(Logininfo login);
+	public int updatevent(EventDto event);
 }

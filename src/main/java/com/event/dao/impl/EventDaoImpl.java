@@ -36,6 +36,18 @@ public class EventDaoImpl implements EventDao{
 		map.put("emailid",event.getEmailId());		
 		return jdbcTemplate.update(query, map);
 	}
+	public int updatevent(EventDto event){
+		String query = "update event set eventName=:name, eventDesc=:desc, eventImage=:image,fromDate=:from,toDate=:date";
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("name", event.getEventName());
+		map.put("desc", event.getEventDesc());
+		map.put("image", event.getEventImage());
+		map.put("from", event.getFromDate());
+		map.put("date", event.getToDate());
+	
+		return jdbcTemplate.update(query, map);
+		
+	}
 	public Boolean login(String userName,String password){
 		 String query = "select * from users where userName=:user and password=:pass";
 		 Map<String, Object> map = new HashMap<String, Object>();

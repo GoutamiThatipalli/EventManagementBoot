@@ -15,7 +15,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,8 +23,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.util.WebUtils;
-
 import com.event.dto.CategoryDto;
 import com.event.dto.EventDto;
 import com.event.dto.Logininfo;
@@ -62,6 +59,12 @@ public class EventController {
 			message = "FAIL to upload " + file.getOriginalFilename() + "!";
 			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
 		}
+	}
+
+	@CrossOrigin
+	@RequestMapping(value = "updatevent",method = RequestMethod.PUT, consumes = { "application/json" })
+	public int updatevent(@RequestBody EventDto event){
+	return eventService.updatevent(event);
 	}
 
 	@CrossOrigin

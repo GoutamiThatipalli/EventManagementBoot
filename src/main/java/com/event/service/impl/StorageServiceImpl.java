@@ -23,6 +23,7 @@ public class StorageServiceImpl implements StorageService {
 		// TODO Auto-generated method stub
 		try {
 			Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+
 		} catch (Exception e) {
 			throw new RuntimeException("FAIL!");
 		}
