@@ -18,4 +18,5 @@ public interface EventService {
 	public CategoryDto getCategory(String id);
 	public Boolean login(Logininfo login);
 	public int updatevent(EventDto event);
+	public EventDto getEventById(String id);
 }

@@ -63,8 +63,19 @@ public class EventController {
 
 	@CrossOrigin
 	@RequestMapping(value = "updatevent",method = RequestMethod.PUT, consumes = { "application/json" })
-	public int updatevent(@RequestBody EventDto event){
-	return eventService.updatevent(event);
+	public ResponseEntity<String> updatevent(@RequestPart("file") MultipartFile file, @RequestPart("data") EventDto event){
+		String message="";
+		try {
+			storageService.store(file);
+			eventService.updatevent(event);
+			files.add(file.getOriginalFilename());
+
+			message = "You successfully uploaded " + file.getOriginalFilename() + "!";
+			return ResponseEntity.status(HttpStatus.OK).body(message);
+		} catch (Exception e) {
+			message = "FAIL to upload " + file.getOriginalFilename() + "!";
+			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
+		}
 	}
 
 	@CrossOrigin
@@ -113,5 +124,11 @@ public class EventController {
 	@Transactional(readOnly = true)
 	public CategoryDto getCategory(@PathVariable("id") String id) {
 		return eventService.getCategory(id);
+	}
+	@CrossOrigin
+	@RequestMapping(value = "getEventById/{id}")
+	@Transactional(readOnly = true)
+	public EventDto getEventById(@PathVariable("id") String id) {
+		return eventService.getEventById(id);
 	}
 }

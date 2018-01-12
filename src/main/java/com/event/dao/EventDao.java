@@ -15,4 +15,5 @@ public interface EventDao {
 	public CategoryDto getCategory(String id);
 	public Boolean login(String username,String password);
 	public int updatevent(EventDto event);
+	public EventDto getEventById(String id);
 }

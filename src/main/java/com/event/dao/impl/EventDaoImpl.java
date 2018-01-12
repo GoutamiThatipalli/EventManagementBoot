@@ -73,6 +73,11 @@ public class EventDaoImpl implements EventDao{
 		return jdbc.query(query, new UsersRowMapper());
 		
 	}
+	public EventDto getEventById(String id){
+		String query = "select * from events where eventId=?";	
+		
+		return jdbc.queryForObject(query, new Object[]{id}, new EventRowMapper());		
+	}
 	public CategoryDto getCategory(String id){
 		String query = "select * from categories where category_id=?";	
 		return jdbc.queryForObject(query, new Object[]{id}, new CategoryRowMapper());		

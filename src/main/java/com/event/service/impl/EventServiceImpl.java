@@ -56,4 +56,9 @@ public class EventServiceImpl implements EventService {
 		// TODO Auto-generated method stub
 		return eventDao.updatevent(event);
 	}
+	@Override
+	public EventDto getEventById(String id) {
+		// TODO Auto-generated method stub
+		return eventDao.getEventById(id);
+	}
 }
