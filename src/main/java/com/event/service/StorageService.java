@@ -13,6 +13,9 @@ public interface StorageService {
     public void deleteAll();
     
     public void init();
+<<<<<<< HEAD
     
     public void delete(String filename);
+=======
+>>>>>>> f2fe5796daaa33ee077f2ad12c46f184a55764d6
 }

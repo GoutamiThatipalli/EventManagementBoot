@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
+=======
+
+>>>>>>> f2fe5796daaa33ee077f2ad12c46f184a55764d6
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
@@ -22,7 +26,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+<<<<<<< HEAD
 
+=======
+>>>>>>> f2fe5796daaa33ee077f2ad12c46f184a55764d6
 import com.event.dto.CategoryDto;
 import com.event.dto.EventDto;
 import com.event.dto.Logininfo;
@@ -32,7 +39,10 @@ import com.event.service.StorageService;
 
 @EnableAutoConfiguration
 @RestController
+<<<<<<< HEAD
 @CrossOrigin("*")
+=======
+>>>>>>> f2fe5796daaa33ee077f2ad12c46f184a55764d6
 @RequestMapping(value = "events")
 public class EventController {
 	 @Context
@@ -45,6 +55,10 @@ public class EventController {
 
 	List<String> files = new ArrayList<String>();
 
+<<<<<<< HEAD
+=======
+	@CrossOrigin
+>>>>>>> f2fe5796daaa33ee077f2ad12c46f184a55764d6
 	@RequestMapping(value = "addevents", method = RequestMethod.POST, consumes = "multipart/form-data")
 	public ResponseEntity<String> addEvents(@RequestPart("file") MultipartFile file, @RequestPart("data") EventDto event) {
 		String message = "";
@@ -52,6 +66,10 @@ public class EventController {
 			storageService.store(file);
 			eventService.addEvents(event);
 			files.add(file.getOriginalFilename());
+<<<<<<< HEAD
+=======
+
+>>>>>>> f2fe5796daaa33ee077f2ad12c46f184a55764d6
 			message = "You successfully uploaded " + file.getOriginalFilename() + "!";
 			return ResponseEntity.status(HttpStatus.OK).body(message);
 		} catch (Exception e) {
@@ -59,19 +77,45 @@ public class EventController {
 			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
 		}
 	}
+<<<<<<< HEAD
 	@RequestMapping(value = "updatevents/{id}",method = RequestMethod.PUT, consumes= {"application/json"} )
 	public  int updatevent1(@PathVariable("id") String id,@RequestBody EventDto event){
 		return eventService.updatevent(event,id);
 		}
 	
+=======
+
+	@CrossOrigin
+	@RequestMapping(value = "updatevent",method = RequestMethod.PUT, consumes = { "application/json" })
+	public ResponseEntity<String> updatevent(@RequestPart("file") MultipartFile file, @RequestPart("data") EventDto event){
+		String message="";
+		try {
+			storageService.store(file);
+			eventService.updatevent(event);
+			files.add(file.getOriginalFilename());
+
+			message = "You successfully uploaded " + file.getOriginalFilename() + "!";
+			return ResponseEntity.status(HttpStatus.OK).body(message);
+		} catch (Exception e) {
+			message = "FAIL to upload " + file.getOriginalFilename() + "!";
+			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
+		}
+	}
+
+	@CrossOrigin
+>>>>>>> f2fe5796daaa33ee077f2ad12c46f184a55764d6
 	@RequestMapping(value = "getAllEvents")
 	public List<EventDto> findAll() {
 		return eventService.findAll();
 	}
 
+<<<<<<< HEAD
 
 	
 	
+=======
+	@CrossOrigin
+>>>>>>> f2fe5796daaa33ee077f2ad12c46f184a55764d6
 	@RequestMapping(value = "auth", method = RequestMethod.POST, consumes = { "application/json" })
 	public  ResponseEntity<String> login(@RequestBody Logininfo user, HttpServletResponse response) {
 		if (eventService.login(user) == true) {
@@ -85,33 +129,53 @@ public class EventController {
 		}
 	}
 
+<<<<<<< HEAD
 	
+=======
+	@CrossOrigin
+>>>>>>> f2fe5796daaa33ee077f2ad12c46f184a55764d6
 	@RequestMapping(value = "getAllCategories")
 	@Transactional(readOnly = true)
 	public List<CategoryDto> AllCategories(HttpServletRequest request) {
 		return eventService.AllCategories();
 	}
 
+<<<<<<< HEAD
 	
+=======
+	@CrossOrigin
+>>>>>>> f2fe5796daaa33ee077f2ad12c46f184a55764d6
 	@RequestMapping(value = "upcomming")
 	@Transactional(readOnly = true)
 	public List<EventDto> Upcomming() {
 		return eventService.Upcomming();
 	}
 
+<<<<<<< HEAD
 	
+=======
+	@CrossOrigin
+>>>>>>> f2fe5796daaa33ee077f2ad12c46f184a55764d6
 	@RequestMapping(value = "getAllUsers")
 	@Transactional(readOnly = true)
 	public List<UserDto> getAllUsers() {
 		return eventService.getAllUsers();
 	}
 
+<<<<<<< HEAD
+=======
+	@CrossOrigin
+>>>>>>> f2fe5796daaa33ee077f2ad12c46f184a55764d6
 	@RequestMapping(value = "getCategoryById/{id}")
 	@Transactional(readOnly = true)
 	public CategoryDto getCategory(@PathVariable("id") String id) {
 		return eventService.getCategory(id);
 	}
+<<<<<<< HEAD
 
+=======
+	@CrossOrigin
+>>>>>>> f2fe5796daaa33ee077f2ad12c46f184a55764d6
 	@RequestMapping(value = "getEventById/{id}")
 	@Transactional(readOnly = true)
 	public EventDto getEventById(@PathVariable("id") String id) {

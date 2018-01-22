@@ -52,9 +52,15 @@ public class EventServiceImpl implements EventService {
 		return eventDao.login(login.getUserName(), login.getPassword());
 	}
 	@Override
+<<<<<<< HEAD
 	public int updatevent(EventDto event,String id) {
 		// TODO Auto-generated method stub
 		return eventDao.updatevent(event,id);
+=======
+	public int updatevent(EventDto event) {
+		// TODO Auto-generated method stub
+		return eventDao.updatevent(event);
+>>>>>>> f2fe5796daaa33ee077f2ad12c46f184a55764d6
 	}
 	@Override
 	public EventDto getEventById(String id) {
