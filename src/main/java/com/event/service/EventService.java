@@ -17,10 +17,6 @@ public interface EventService {
 	public List<UserDto> getAllUsers();
 	public CategoryDto getCategory(String id);
 	public Boolean login(Logininfo login);
-<<<<<<< HEAD
 	public int updatevent(EventDto event,String id);
-=======
-	public int updatevent(EventDto event);
->>>>>>> f2fe5796daaa33ee077f2ad12c46f184a55764d6
 	public EventDto getEventById(String id);
 }
